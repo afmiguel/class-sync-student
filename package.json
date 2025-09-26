@@ -1,7 +1,8 @@
 {
-  "name": "class-sync",
-  "displayName": "Class Sync",
-  "description": "An extension to sync code between professor and students.",
+  "name": "class-sync-student",
+  "publisher": "afonsomiguel",
+  "displayName": "Class Sync - Student",
+  "description": "The student's tool for Class Sync.",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.101.0"
@@ -9,18 +10,12 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onStartupFinished"
+],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
-      {
-        "command": "class-sync.professorSetup",
-        "title": "Class Sync: [PROFESSOR] Initial Setup"
-      },
-      {
-        "command": "class-sync.professorSync",
-        "title": "Class Sync: [PROFESSOR] Push Update"
-      },
       {
         "command": "class-sync.studentSetup",
         "title": "Class Sync: [STUDENT] Initial Sync / Clone"
@@ -33,11 +28,8 @@
     "menus": {
       "editor/title": [
         {
-          "command": "class-sync.professorSync",
-          "group": "navigation"
-        },
-        {
           "command": "class-sync.studentResync",
+          "when": "git.initialized",
           "group": "navigation"
         }
       ]
